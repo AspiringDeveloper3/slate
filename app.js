@@ -1,6 +1,24 @@
 let color = "white";
 let shape = "circle";
+const cursor = document.querySelector(".cursor");
 const input = document.querySelector("input");
+
+window.addEventListener("mousemove", (event) => {
+  cursor.style.top = event.pageY + "px";
+  cursor.style.left = event.pageX + "px";
+  cursor.style.backgroundColor = color;
+
+  if (shape === "square") {
+    cursor.classList = `cursor`;
+    cursor.classList.add("square");
+  } else if (shape === "rectangle") {
+    cursor.classList = `cursor`;
+    cursor.classList.add("rect");
+  } else if (shape === "circle") {
+    cursor.classList = `cursor`;
+    cursor.classList.add("circle");
+  }
+});
 
 $(".draw-area").click((event) => {
   const circle = document.createElement("div");
@@ -20,7 +38,7 @@ $(".draw-area").click((event) => {
 
 document.querySelectorAll(".fas").forEach((icon) => {
   icon.addEventListener("click", (event) => {
-    input.classList.toggle("move-in");
+
     $("input").css({
       top: `${event.pageY - 30}px`,
       left: `${event.pageX}px`,
@@ -28,17 +46,18 @@ document.querySelectorAll(".fas").forEach((icon) => {
     });
 
     if (icon.classList[1] === "fa-paint-brush") {
+      input.classList.toggle("move-in");
+      input.placeholder = `Enter color`;
       color = input.value;
     } else if (icon.classList[1] === "fa-shapes") {
-      shape = input.value;
+      input.classList.toggle("move-in");
+      input.placeholder = `Square / Rectangle / Circle`;
+      shape = input.value.toLowerCase();
       if (shape === "square") {
         $(".draw-area").click((event) => {
           const square = document.createElement("div");
-          square.classList.add("shape");
-          square.style.borderRadius = `5px`;
+          square.classList.add("shape", "square");
           square.style.backgroundColor = color;
-          square.style.width = `30px`;
-          square.style.height = `30px`;
           $(square).css({
             top: `${event.pageY}px`,
             left: `${event.pageX}px`,
@@ -50,11 +69,8 @@ document.querySelectorAll(".fas").forEach((icon) => {
       } else if (shape === "rectangle") {
         $(".draw-area").click((event) => {
           const rectangle = document.createElement("div");
-          rectangle.classList.add("shape");
-          rectangle.style.borderRadius = `5px`;
+          rectangle.classList.add("shape", "rect");
           rectangle.style.backgroundColor = color;
-          rectangle.style.width = `45px`;
-          rectangle.style.height = `30px`;
           $(rectangle).css({
             top: `${event.pageY}px`,
             left: `${event.pageX}px`,
@@ -67,7 +83,7 @@ document.querySelectorAll(".fas").forEach((icon) => {
         $(".draw-area").click((event) => {
           const circle = document.createElement("div");
           circle.classList.add("shape");
-          circle.style.borderRadius = `5px`;
+          circle.style.borderRadius = `100%`;
           circle.style.backgroundColor = color;
           circle.style.width = `30px`;
           circle.style.height = `30px`;
@@ -80,6 +96,8 @@ document.querySelectorAll(".fas").forEach((icon) => {
           $(".draw-area").append(circle);
         });
       }
+    } else {
+      $(".draw-area").empty();
     }
   });
 });

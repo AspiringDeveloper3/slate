@@ -7,14 +7,37 @@
   font-family: "Poppins", sans-serif;
 }
 body {
+  cursor: none;
+  overflow-y: hidden;
   background-color: #bd66ef;
 }
-.triangle {
+.cursor {
   position: absolute;
-  top: 20%;
-  left: 40%;
-  border : 5px solid blanchedalmond;
-  width: 20px;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+}
+.square {
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+}
+.rect {
+  border-radius: 5px;
+  width: 45px;
+  height: 30px;
+}
+.circle {
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+}
+.oval {
+  border-radius: 100%;
+  width: 30px;
   height: 20px;
 }
 .sidebar {
@@ -36,6 +59,7 @@ input {
   border-bottom: rgb(16, 83, 100) solid 2px;
 }
 input::placeholder {
+  font-size: 20px;
   color: rgb(16, 83, 100);
   font-family: "Poppins", sans-serif;
 }
@@ -47,6 +71,7 @@ input::placeholder {
 }
 
 .icon1 {
+  cursor: pointer;
   color: #ef47e1;
   top: 0;
   left: 25px;
@@ -54,6 +79,7 @@ input::placeholder {
   margin-top: 2rem;
 }
 .icon2 {
+  cursor: pointer;
   color: #ef47e1;
   top: 33%;
   left: 25px;
@@ -61,6 +87,7 @@ input::placeholder {
   margin-top: 2rem;
 }
 .icon3 {
+  cursor: pointer;
   color: #ef47e1;
   top: 66%;
   left: 25px;
